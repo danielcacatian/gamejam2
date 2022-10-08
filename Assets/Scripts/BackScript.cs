@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BackScript : MonoBehaviour
 {
+// Script for the back button to switch back to map camera
     public Camera[] cameras;
 
     // Start is called before the first frame update
@@ -24,8 +25,7 @@ public class BackScript : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             if (hit && hit.collider.gameObject.name == "Back") 
             {
-                // Debug.Log(hit.collider.gameObject.name);
-
+                //Go back to main camera
                 cameras[0].GetComponent<Camera>().enabled = true;
 
                 // Disable all other camera locations

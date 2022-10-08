@@ -4,16 +4,31 @@ using UnityEngine;
 
 public class RemoveEvidenceScript : MonoBehaviour
 {
-    public GameObject[] evidences;
-    public GameObject[] homeEvidences;
-    private int evidencebar; //Location area bar
-    private bool allfound;
+// Script to remove evidence in different locations
+    //MANOR LOCATION---------------------------------------------------
+    public GameObject[] manorLocationE; // Evidence in manor location
+    public GameObject[] mapManorE; // Evidence PROGRESS for manor in main MAP
+    private int manorEvidenceBar; //Location PROGRESS bar
+    private bool manorAllFound;
+
+    //FARM LOCATION---------------------------------------------------
+    public GameObject[] farmLocationE; // Evidence in farm location
+    public GameObject[] mapFarmE; // Evidence PROGRESS for farm in main MAP
+    private int farmEvidenceBar; //Location PROGRESS bar
+    private bool farmAllFound;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.tag = "Evidence";
-        evidencebar = evidences.Length;
+        //MANOR tag
+        gameObject.tag = "ManorE";
+        manorEvidenceBar = manorLocationE.Length;
+
+        //FARM tag
+        gameObject.tag = "FarmE";
+        farmEvidenceBar = farmLocationE.Length;
+
     }
 
     // Update is called once per frame
@@ -27,34 +42,59 @@ public class RemoveEvidenceScript : MonoBehaviour
             
             //Clicks on collider area
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit && hit.collider.gameObject.tag == "Evidence")
-            {
-                Debug.Log("removed");
-                Destroy(hit.transform.gameObject);
-                EvidenceFound(1);
 
+            // Clicks MANOR evidence
+            if (hit && hit.collider.gameObject.tag == "ManorE")
+            {
+                Destroy(hit.transform.gameObject);
+                ManorEvidenceFound(1);
             }
+
+            // Clicks FARM evidence
+           if (hit && hit.collider.gameObject.tag == "FarmE")
+            {
+                Destroy(hit.transform.gameObject);
+                FarmEvidenceFound(1);
+            }
+
         }
 
         // No more evidence
-        if(allfound)
+        if(manorAllFound && farmAllFound)
         {
             Debug.Log("No more evidence");
         }
     }
 
-    public void EvidenceFound(int d)
+    //Found evidence in MANOR location
+    public void ManorEvidenceFound(int d)
     {
-        if (evidencebar >= 1)
+        if (manorEvidenceBar >= 1)
         {
-            Debug.Log("Found");
             //Map bar
-            evidencebar -= d; //1-1=0
-            Destroy(evidences[evidencebar].gameObject);
-            Destroy(homeEvidences[evidencebar].gameObject);
-            if(evidencebar < 1)
+            manorEvidenceBar -= d; //1-1=0
+            Destroy(manorLocationE[manorEvidenceBar].gameObject);
+            Destroy(mapManorE[manorEvidenceBar].gameObject);
+            if(manorEvidenceBar < 1)
             {
-                allfound = true;
+                manorAllFound = true;
+            }
+
+        }
+    }
+
+    //Found evidence in FARM location
+    public void FarmEvidenceFound(int d)
+    {
+        if (farmEvidenceBar >= 1)
+        {
+            //Map bar
+            farmEvidenceBar -= d; //1-1=0
+            Destroy(farmLocationE[farmEvidenceBar].gameObject);
+            Destroy(mapFarmE[farmEvidenceBar].gameObject);
+            if(farmEvidenceBar < 1)
+            {
+                farmAllFound = true;
             }
 
         }

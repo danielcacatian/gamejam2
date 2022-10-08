@@ -5,6 +5,7 @@ using TMPro;
 
 public class TimerScript : MonoBehaviour
 {
+// Timer script that counts up
     public float TimeLeft;
     public bool TimerOn = false;
 
@@ -21,7 +22,8 @@ public class TimerScript : MonoBehaviour
     {
         if (TimerOn)
         {
-            if(TimeLeft < 720)
+            // Time limit (in seconds)
+            if(TimeLeft < 720) // Ends at 12mins
             {
                 TimeLeft += Time.deltaTime;
                 updateTimer(TimeLeft);

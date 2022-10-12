@@ -36,7 +36,8 @@ public class LocationScript : MonoBehaviour
                 cameras[0].GetComponent<Camera>().enabled = false;
                 cameras[1].GetComponent<Camera>().enabled = true; // Enable MANOR cam
                 cameras[2].GetComponent<Camera>().enabled = false;
-
+                cameras[3].GetComponent<Camera>().enabled = false;
+                cameras[4].GetComponent<Camera>().enabled = false;
             }
             //Brings you to FARM location
             if (hit && hit.collider.gameObject.name == "Farm")
@@ -44,6 +45,26 @@ public class LocationScript : MonoBehaviour
                 cameras[0].GetComponent<Camera>().enabled = false;
                 cameras[1].GetComponent<Camera>().enabled = false;
                 cameras[2].GetComponent<Camera>().enabled = true; // Enable FARM cam
+                cameras[3].GetComponent<Camera>().enabled = false;
+                cameras[4].GetComponent<Camera>().enabled = false;
+            }
+            //Brings you to CHURCH location
+            if (hit && hit.collider.gameObject.name == "Church")
+            {
+                cameras[0].GetComponent<Camera>().enabled = false;
+                cameras[1].GetComponent<Camera>().enabled = false;
+                cameras[2].GetComponent<Camera>().enabled = false;
+                cameras[3].GetComponent<Camera>().enabled = true; // Enable CHURCH cam
+                cameras[4].GetComponent<Camera>().enabled = false;
+            }
+            //Brings you to LODGE location
+            if (hit && hit.collider.gameObject.name == "Lodge")
+            {
+                cameras[0].GetComponent<Camera>().enabled = false;
+                cameras[1].GetComponent<Camera>().enabled = false;
+                cameras[2].GetComponent<Camera>().enabled = false;
+                cameras[3].GetComponent<Camera>().enabled = false;
+                cameras[4].GetComponent<Camera>().enabled = true; // Enable LODGE cam
             }
         }
     }

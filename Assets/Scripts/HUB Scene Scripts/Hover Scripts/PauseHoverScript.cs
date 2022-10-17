@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;// Required when using Event data.
+using UnityEngine.SceneManagement;
 
 public class PauseHoverScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler// required interface when using the OnPointerEnter method.
 {
@@ -35,11 +36,16 @@ public class PauseHoverScript : MonoBehaviour, IPointerEnterHandler, IPointerExi
             journalScreen.SetActive(false);
             controlsScreen.SetActive(false);
         }
-        else if (Input.GetKeyDown(KeyCode.P) && pauseScreen.activeSelf)
+        else if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) && pauseScreen.activeSelf)
         {
             //Resume scene
             Time.timeScale = 1;
             pauseScreen.SetActive(false);
+        }
+        // Quit
+        else if (Input.GetKeyDown(KeyCode.Q) && pauseScreen.activeSelf)
+        {
+            SceneManager.LoadScene(sceneName: "Title Screen");
         }
     }
 

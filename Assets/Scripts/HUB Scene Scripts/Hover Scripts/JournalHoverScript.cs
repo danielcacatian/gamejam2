@@ -34,7 +34,7 @@ public class JournalHoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
             controlsScreen.SetActive(false);
             pauseScreen.SetActive(false);
         }
-        else if (Input.GetKeyDown(KeyCode.J) && journalScreen.activeSelf)
+        else if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.Escape) && journalScreen.activeSelf)
         {
             //Resume scene
             Time.timeScale = 1;

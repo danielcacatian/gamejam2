@@ -35,7 +35,7 @@ public class ControlsHoverScript : MonoBehaviour, IPointerEnterHandler, IPointer
             journalScreen.SetActive(false);
             pauseScreen.SetActive(false);
         }
-        else if(Input.GetKeyDown(KeyCode.C) && controlsScreen.activeSelf)
+        else if(Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Escape) && controlsScreen.activeSelf)
         {
             //Resume scene
             Time.timeScale = 1;

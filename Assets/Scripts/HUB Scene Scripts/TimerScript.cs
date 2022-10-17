@@ -9,7 +9,7 @@ public class TimerScript : MonoBehaviour
     // Timer script that counts up
     public float TimeLeft; //in seconds
     public float TimeLimit; //in seconds
-    public bool TimerOn = false;
+    public bool TimerOn = true;
     public TMP_Text TimerText;
 
     //declare and assign the gameObj that has the script
@@ -18,7 +18,8 @@ public class TimerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        TimerOn = true;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame

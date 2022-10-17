@@ -30,6 +30,10 @@ public class CreditsScript : MonoBehaviour
                 SceneManager.LoadScene(sceneName: "Title Screen");
             }
         }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(sceneName: "Title Screen");
+        }
 
     }
 

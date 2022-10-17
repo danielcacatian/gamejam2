@@ -6,19 +6,19 @@ using TMPro;
 
 public class TimerScript : MonoBehaviour
 {
-// Timer script that counts up
+    // Timer script that counts up
     public float TimeLeft; //in seconds
     public float TimeLimit; //in seconds
     public bool TimerOn = false;
     public TMP_Text TimerText;
 
-//declare and assign the gameObj that has the script
+    //declare and assign the gameObj that has the script
     public GameObject EvidenceController;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -27,10 +27,10 @@ public class TimerScript : MonoBehaviour
         if (TimerOn)
         {
             // Time limit (in seconds)
-            if(TimeLeft < TimeLimit) // Ends at 12mins
+            if(TimeLeft > TimeLimit) // Ends at 12mins
             {
                 // Update timer
-                TimeLeft += Time.deltaTime;
+                TimeLeft -= Time.deltaTime;
                 updateTimer(TimeLeft);
 
                 // Found all evidence

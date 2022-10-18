@@ -5,8 +5,16 @@ using UnityEngine;
 
 public class LocationScript : MonoBehaviour
 {
-// Script that allows the user to switch to different locations when clicking on them
+    // Script that allows the user to switch to different locations when clicking on them
     public Camera[] cameras;
+
+    // Map sprites
+    public GameObject map;
+    public Sprite mapOG;
+    public Sprite mapLodge;
+    public Sprite mapManor;
+    public Sprite mapFarm;
+    public Sprite mapChurch;
 
     // Start is called before the first frame update
     void Start()
@@ -67,5 +75,30 @@ public class LocationScript : MonoBehaviour
                 cameras[4].GetComponent<Camera>().enabled = true; // Enable LODGE cam
             }
         }
+    }
+
+    // Mouse hover over certain locations
+    void OnMouseOver()
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+        //Hovers on collider area
+        RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+
+        if(Time.timeScale == 1)
+        {
+            // Hover over church
+            if (hit && hit.collider.gameObject.name == "Church" || hit.collider.gameObject.name == "Cultist PFP")
+            {
+                map.gameObject.GetComponent<SpriteRenderer>().sprite = mapChurch;
+            }
+        }
+    }
+
+    // Mouse hover over nothing
+    void OnMouseExit()
+    {
+        //The mouse is no longer hovering over the GameObject so output this message each frame
+        map.gameObject.GetComponent<SpriteRenderer>().sprite = mapOG;
     }
 }

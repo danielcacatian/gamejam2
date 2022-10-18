@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class RemoveEvidenceScript : MonoBehaviour
 {
-// Script to remove evidence in different locations
+    // Script to remove evidence in different locations
     //MANOR LOCATION---------------------------------------------------
     public GameObject[] manorLocationE; // Evidence in MANOR location
     public GameObject[] mapManorE; // Evidence PROGRESS for manor in main MAP
@@ -34,19 +35,19 @@ public class RemoveEvidenceScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //MANOR tag
+        //MANOR tag-----------------------------------------------------------
         gameObject.tag = "ManorE";
         manorEvidenceBar = manorLocationE.Length;
 
-        //FARM tag
+        //FARM tag-----------------------------------------------------------
         gameObject.tag = "FarmE";
         farmEvidenceBar = farmLocationE.Length;
 
-        //CHURCH tag
+        //CHURCH tag-----------------------------------------------------------
         gameObject.tag = "ChurchE";
         churchEvidenceBar = churchLocationE.Length;
 
-        //LODGE tag
+        //LODGE tag-----------------------------------------------------------
         gameObject.tag = "LodgeE";
         lodgeEvidenceBar = lodgeLocationE.Length;
 
@@ -109,7 +110,6 @@ public class RemoveEvidenceScript : MonoBehaviour
         {
             //Map bar
             manorEvidenceBar -= d; //1-1=0
-            Destroy(manorLocationE[manorEvidenceBar].gameObject);
             Destroy(mapManorE[manorEvidenceBar].gameObject);
             if(manorEvidenceBar < 1)
             {
@@ -126,7 +126,6 @@ public class RemoveEvidenceScript : MonoBehaviour
         {
             //Map bar
             farmEvidenceBar -= d; //1-1=0
-            Destroy(farmLocationE[farmEvidenceBar].gameObject);
             Destroy(mapFarmE[farmEvidenceBar].gameObject);
             if(farmEvidenceBar < 1)
             {
@@ -143,7 +142,6 @@ public class RemoveEvidenceScript : MonoBehaviour
         {
             //Map bar
             churchEvidenceBar -= d; //1-1=0
-            Destroy(churchLocationE[churchEvidenceBar].gameObject);
             Destroy(mapChurchE[churchEvidenceBar].gameObject);
             if(churchEvidenceBar < 1)
             {
@@ -160,7 +158,6 @@ public class RemoveEvidenceScript : MonoBehaviour
         {
             //Map bar
             lodgeEvidenceBar -= d; //1-1=0
-            Destroy(lodgeLocationE[lodgeEvidenceBar].gameObject);
             Destroy(mapLodgeE[lodgeEvidenceBar].gameObject);
             if(lodgeEvidenceBar < 1)
             {

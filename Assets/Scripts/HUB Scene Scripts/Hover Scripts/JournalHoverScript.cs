@@ -26,7 +26,7 @@ public class JournalHoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
     void Update()
     {
         //Key presses
-        if (Input.GetKeyDown(KeyCode.J) && !journalScreen.activeSelf)
+        if (Input.GetKeyDown(KeyCode.J) && !journalScreen.activeSelf && Time.timeScale == 1)
         {
             journalScreen.SetActive(true);
             //Freeze scene
@@ -34,7 +34,7 @@ public class JournalHoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
             controlsScreen.SetActive(false);
             pauseScreen.SetActive(false);
         }
-        else if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.Escape) && journalScreen.activeSelf)
+        else if (Input.GetKeyDown(KeyCode.J) && journalScreen.activeSelf)
         {
             //Resume scene
             Time.timeScale = 1;

@@ -35,7 +35,7 @@ public class TimerScript : MonoBehaviour
                 updateTimer(TimeLeft);
 
                 // Found all evidence
-                // allEvidenceFound();
+                allEvidenceFound();
 
             }
             else
@@ -65,7 +65,7 @@ public class TimerScript : MonoBehaviour
     //In your function
     void allEvidenceFound()
     {
-        if(EvidenceController.GetComponent<RemoveEvidenceScript>().manorAllFound)
+        if(EvidenceController.GetComponent<RemoveEvidenceScript>().churchAllFound)
         {
             // You found all the evidence
             SceneManager.LoadScene (sceneName:"Win");

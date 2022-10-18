@@ -28,7 +28,7 @@ public class PauseHoverScript : MonoBehaviour, IPointerEnterHandler, IPointerExi
     void Update()
     {
         //Key presses
-        if (Input.GetKeyDown(KeyCode.P) && !pauseScreen.activeSelf)
+        if (Input.GetKeyDown(KeyCode.P) && !pauseScreen.activeSelf && Time.timeScale == 1)
         {
             pauseScreen.SetActive(true);
             //Freeze scene
@@ -36,7 +36,7 @@ public class PauseHoverScript : MonoBehaviour, IPointerEnterHandler, IPointerExi
             journalScreen.SetActive(false);
             controlsScreen.SetActive(false);
         }
-        else if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) && pauseScreen.activeSelf)
+        else if (Input.GetKeyDown(KeyCode.P) && pauseScreen.activeSelf)
         {
             //Resume scene
             Time.timeScale = 1;

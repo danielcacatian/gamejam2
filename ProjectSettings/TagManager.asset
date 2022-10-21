@@ -8,6 +8,7 @@ TagManager:
   - FarmE
   - ChurchE
   - LodgeE
+  - Penalty
   layers:
   - Default
   - TransparentFX

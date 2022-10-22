@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random=UnityEngine.Random;
 
 public class RemoveEvidenceScript : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class RemoveEvidenceScript : MonoBehaviour
     public GameObject[] mapLodgeE; // Evidence PROGRESS for LODGE in main MAP
     private int lodgeEvidenceBar; //Location PROGRESS bar
     public bool lodgeAllFound;
+
+    //SFX Array
+    public AudioSource randomSound;
+    public AudioClip[]  AudioSources;
 
 
     // Start is called before the first frame update
@@ -70,6 +75,7 @@ public class RemoveEvidenceScript : MonoBehaviour
             {
                 Destroy(hit.transform.gameObject);
                 ManorEvidenceFound(1);
+                RandomSoundness();
             }
 
             // Clicks FARM evidence--------------------------
@@ -77,6 +83,7 @@ public class RemoveEvidenceScript : MonoBehaviour
             {
                 Destroy(hit.transform.gameObject);
                 FarmEvidenceFound(1);
+                RandomSoundness();
             }
 
             // Clicks CHURCH evidence------------------------
@@ -84,6 +91,8 @@ public class RemoveEvidenceScript : MonoBehaviour
             {
                 Destroy(hit.transform.gameObject);
                 ChurchEvidenceFound(1);
+                RandomSoundness();
+
             }
 
             // Clicks LODGE evidence------------------------
@@ -91,8 +100,8 @@ public class RemoveEvidenceScript : MonoBehaviour
             {
                 Destroy(hit.transform.gameObject);
                 LodgeEvidenceFound(1);
+                RandomSoundness();
             }
-
         }
 
         // No more evidence
@@ -165,5 +174,12 @@ public class RemoveEvidenceScript : MonoBehaviour
             }
 
         }
+    }
+
+    // Plays random audio
+    public void RandomSoundness()
+    {
+        randomSound.clip = AudioSources[Random.Range(0, AudioSources.Length)];
+        randomSound.Play();
     }
 }

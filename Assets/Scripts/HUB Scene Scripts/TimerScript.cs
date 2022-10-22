@@ -24,8 +24,10 @@ public class TimerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // timer starts automatically
         TimerOn = true;
         Time.timeScale = 1;
+
     }
 
     // Update is called once per frame
@@ -56,8 +58,6 @@ public class TimerScript : MonoBehaviour
                         timerVisual.fillAmount -= 10f/120f ; // TimePenalty / Time Limit------------------
                     }
                 }
-
-                Debug.Log(timerVisual.fillAmount);
 
                 // Reduce the fill amount of the timer image
                 timerVisual.fillAmount -= 1.0f/120.0f * Time.deltaTime;

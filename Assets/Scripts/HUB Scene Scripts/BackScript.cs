@@ -12,6 +12,10 @@ public class BackScript : MonoBehaviour
     public Sprite backWhite;
     public Sprite backRed;
 
+    // SFX
+    public AudioSource hoverSFX;
+    public AudioSource clickSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,9 +36,11 @@ public class BackScript : MonoBehaviour
             {
                 //Go back to main camera
                 cameras[0].GetComponent<Camera>().enabled = true;
+                // SFX
+                clickSFX.Play();
 
                 // Disable all other camera locations
-                for(int i=1; i < cameras.Length; i++) 
+                for (int i=1; i < cameras.Length; i++) 
                 {
                     cameras[i].GetComponent<Camera>().enabled = false;
                 }
@@ -50,13 +56,16 @@ public class BackScript : MonoBehaviour
             {
                 cameras[i].GetComponent<Camera>().enabled = false;
             }
+
+            clickSFX.Play();
         }
     }
 
     // Mouse hover over BACK icon
-    void OnMouseOver()
+    void OnMouseEnter()
     {
         back.gameObject.GetComponent<SpriteRenderer>().sprite = backRed;
+        hoverSFX.Play();
     }
 
     // Mouse hover over nothing

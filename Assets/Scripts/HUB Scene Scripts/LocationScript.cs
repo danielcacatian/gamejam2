@@ -16,6 +16,10 @@ public class LocationScript : MonoBehaviour
     public Sprite mapFarm;
     public Sprite mapChurch;
 
+    // SFX
+    public AudioSource locationSFX;
+    public AudioSource clickSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +50,8 @@ public class LocationScript : MonoBehaviour
                 cameras[2].GetComponent<Camera>().enabled = false;
                 cameras[3].GetComponent<Camera>().enabled = false;
                 cameras[4].GetComponent<Camera>().enabled = false;
+                //SFX
+                clickSFX.Play();
             }
             //Brings you to FARM location
             if (hit && hit.collider.gameObject.name == "Farm")
@@ -55,6 +61,8 @@ public class LocationScript : MonoBehaviour
                 cameras[2].GetComponent<Camera>().enabled = true; // Enable FARM cam
                 cameras[3].GetComponent<Camera>().enabled = false;
                 cameras[4].GetComponent<Camera>().enabled = false;
+                //SFX
+                clickSFX.Play();
             }
             //Brings you to CHURCH location
             if (hit && hit.collider.gameObject.name == "Church")
@@ -64,6 +72,8 @@ public class LocationScript : MonoBehaviour
                 cameras[2].GetComponent<Camera>().enabled = false;
                 cameras[3].GetComponent<Camera>().enabled = true; // Enable CHURCH cam
                 cameras[4].GetComponent<Camera>().enabled = false;
+                //SFX
+                clickSFX.Play();
             }
             //Brings you to LODGE location
             if (hit && hit.collider.gameObject.name == "Lodge")
@@ -73,12 +83,14 @@ public class LocationScript : MonoBehaviour
                 cameras[2].GetComponent<Camera>().enabled = false;
                 cameras[3].GetComponent<Camera>().enabled = false;
                 cameras[4].GetComponent<Camera>().enabled = true; // Enable LODGE cam
+                //SFX
+                clickSFX.Play();
             }
         }
     }
 
     // Mouse hover over certain locations
-    void OnMouseOver()
+    void OnMouseEnter()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
@@ -87,10 +99,18 @@ public class LocationScript : MonoBehaviour
 
         if(Time.timeScale == 1)
         {
+            // Hover over lodge
+            if (hit && hit.collider.gameObject.name == "Lodge" || hit.collider.gameObject.name == "Hitman PFP")
+            {
+                map.gameObject.GetComponent<SpriteRenderer>().sprite = mapLodge;
+                locationSFX.Play();
+            }
+
             // Hover over church
-            if (hit && hit.collider.gameObject.name == "Church" || hit.collider.gameObject.name == "Cultist PFP")
+            else if (hit && hit.collider.gameObject.name == "Church" || hit.collider.gameObject.name == "Cultist PFP")
             {
                 map.gameObject.GetComponent<SpriteRenderer>().sprite = mapChurch;
+                locationSFX.Play();
             }
         }
     }

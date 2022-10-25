@@ -16,6 +16,10 @@ public class JournalHoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
     public GameObject controlsScreen;
     public GameObject pauseScreen;
 
+    // SFX
+    public AudioSource hoverSFX;
+    public AudioSource clickSFX;
+
     void Start()
     {
         journalScreen.SetActive(false);
@@ -33,12 +37,16 @@ public class JournalHoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
             Time.timeScale = 0;
             controlsScreen.SetActive(false);
             pauseScreen.SetActive(false);
+
+            clickSFX.Play();
         }
         else if (Input.GetKeyDown(KeyCode.J) && journalScreen.activeSelf)
         {
             //Resume scene
             Time.timeScale = 1;
             journalScreen.SetActive(false);
+
+            clickSFX.Play();
         }
     }
 
@@ -47,6 +55,7 @@ public class JournalHoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void OnPointerEnter(PointerEventData eventData)
     {
         journalIcon.gameObject.GetComponent<Image>().sprite = journalRed;
+        hoverSFX.Play();
     }
 
     //Mouse exits the UI object
@@ -66,12 +75,16 @@ public class JournalHoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
             Time.timeScale = 0;
             controlsScreen.SetActive(false);
             pauseScreen.SetActive(false);
+
+            clickSFX.Play();
         }
         else if (journalScreen.activeSelf)
         {
             //Resume scene
             Time.timeScale = 1;
             journalScreen.SetActive(false);
+
+            clickSFX.Play();
         }
 
     }

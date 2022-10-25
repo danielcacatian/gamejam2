@@ -10,10 +10,12 @@ public class CreditsHoverScript : MonoBehaviour
     public Sprite title;
     public Sprite credits;
 
+    public AudioSource hoverSFX;
     // Mouse hover over START
-    void OnMouseOver()
+    void OnMouseEnter()
     {
         titleScreen.gameObject.GetComponent<SpriteRenderer>().sprite = credits;
+        hoverSFX.Play();
     }
 
     // Click on CREDITS
@@ -29,6 +31,7 @@ public class CreditsHoverScript : MonoBehaviour
             if (hit && hit.collider.gameObject.name == "Credits")
             {
                 SceneManager.LoadScene(sceneName: "Credits");
+                hoverSFX.Play();
             }
         }
 

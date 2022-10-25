@@ -10,10 +10,14 @@ public class StartHoverScript : MonoBehaviour
     public Sprite title;
     public Sprite start;
 
+    //SFX
+    public AudioSource hoverSFX;
+
     // Mouse hover over START
-    void OnMouseOver()
+    void OnMouseEnter()
     {
         titleScreen.gameObject.GetComponent<SpriteRenderer>().sprite = start;
+        hoverSFX.Play();
     }
 
     // Click on START

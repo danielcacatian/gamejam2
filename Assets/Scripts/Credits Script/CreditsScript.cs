@@ -9,10 +9,12 @@ public class CreditsScript : MonoBehaviour
     public Sprite backWhite;
     public Sprite backRed;
 
+    public AudioSource hoverSFX;
     // Mouse hover over BACK icon
-    void OnMouseOver()
+    void OnMouseEnter()
     {
         back.gameObject.GetComponent<SpriteRenderer>().sprite = backRed;
+        hoverSFX.Play();
     }
 
     // Click on BACK arrow

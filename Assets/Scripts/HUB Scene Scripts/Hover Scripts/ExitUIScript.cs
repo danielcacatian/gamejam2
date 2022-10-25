@@ -10,6 +10,8 @@ public class ExitUIScript : MonoBehaviour, IPointerDownHandler
     public GameObject controlsScreen;
     public GameObject pauseScreen;
 
+    public AudioSource clickSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,8 @@ public class ExitUIScript : MonoBehaviour, IPointerDownHandler
             journalScreen.SetActive(false);
             controlsScreen.SetActive(false);
             pauseScreen.SetActive(false);
+
+            clickSFX.Play();
         }
 
     }

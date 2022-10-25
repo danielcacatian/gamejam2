@@ -9,10 +9,13 @@ public class QuitHoverScript : MonoBehaviour
     public GameObject titleScreen;
     public Sprite title;
     public Sprite quit;
+
+    public AudioSource hoverSFX;
     // Mouse hover over QUIT
-    void OnMouseOver()
+    void OnMouseEnter()
     {
         titleScreen.gameObject.GetComponent<SpriteRenderer>().sprite = quit;
+        hoverSFX.Play();
     }
 
     // Click on QUIT

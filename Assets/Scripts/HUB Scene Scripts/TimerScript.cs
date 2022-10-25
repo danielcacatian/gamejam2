@@ -63,9 +63,6 @@ public class TimerScript : MonoBehaviour
                 timerVisual.fillAmount -= 1.0f/120.0f * Time.deltaTime;
                                             //Time left .0f ----------------------------------------------
 
-                // Found all evidence
-                allEvidenceFound();
-
             }
             else
             {
@@ -92,15 +89,5 @@ public class TimerScript : MonoBehaviour
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
         TimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
-
-    //In your function
-    void allEvidenceFound()
-    {
-        if(EvidenceController.GetComponent<RemoveEvidenceScript>().churchAllFound)
-        {
-            // You found all the evidence
-            SceneManager.LoadScene (sceneName:"Win");
-        }
     }
 }

@@ -17,6 +17,10 @@ public class ControlsHoverScript : MonoBehaviour, IPointerEnterHandler, IPointer
     public GameObject journalScreen;
     public GameObject pauseScreen;
 
+    // SFX
+    public AudioSource hoverSFX;
+    public AudioSource clickSFX;
+
     void Start()
     {
         controlsScreen.SetActive(false);
@@ -34,12 +38,16 @@ public class ControlsHoverScript : MonoBehaviour, IPointerEnterHandler, IPointer
             Time.timeScale = 0;
             journalScreen.SetActive(false);
             pauseScreen.SetActive(false);
+
+            clickSFX.Play();
         }
         else if(Input.GetKeyDown(KeyCode.C) && controlsScreen.activeSelf)
         {
             //Resume scene
             Time.timeScale = 1;
             controlsScreen.SetActive(false);
+
+            clickSFX.Play();
         }
     }
 
@@ -48,6 +56,7 @@ public class ControlsHoverScript : MonoBehaviour, IPointerEnterHandler, IPointer
     public void OnPointerEnter(PointerEventData eventData)
     {
         controlsIcon.gameObject.GetComponent<Image>().sprite = controlsRed;
+        hoverSFX.Play();
     }
 
     //Mouse exits the UI object
@@ -67,12 +76,16 @@ public class ControlsHoverScript : MonoBehaviour, IPointerEnterHandler, IPointer
             Time.timeScale = 0;
             journalScreen.SetActive(false);
             pauseScreen.SetActive(false);
+
+            clickSFX.Play();
         }
         else if (controlsScreen.activeSelf)
         {
             //Resume scene
             Time.timeScale = 1;
             controlsScreen.SetActive(false);
+
+            clickSFX.Play();
         }
 
     }

@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class JournalScript : MonoBehaviour
 {
+        // Manor journal -----------------------------------
+        // Lines
+        public GameObject manorMopLine;
+        public GameObject manorShrineLine;
+        public GameObject manorLockLine;
+        public GameObject manorBodyLine;
+        public GameObject manorAxeLine;
+        // Evidences
+        public GameObject manorMop;
+        public GameObject manorShrine;
+        public GameObject manorLock;
+        public GameObject manorBody;
+        public GameObject manorAxe;
         // Lodge journal -----------------------------------
         // Lines
         public GameObject lodgeGunLine;
@@ -34,6 +47,13 @@ public class JournalScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //MANOR line deactivation ----------------------
+        manorMopLine.SetActive(false);
+        manorShrineLine.SetActive(false);
+        manorLockLine.SetActive(false);
+        manorBodyLine.SetActive(false);
+        manorAxeLine.SetActive(false);
+
         //LODGE line deactivation ----------------------
         lodgeGunLine.SetActive(false);
         lodgeDisguisesLine.SetActive(false);
@@ -52,6 +72,28 @@ public class JournalScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // MANOR journal lines --------------------------
+        if (manorMop.gameObject == null)
+        {
+            manorMopLine.SetActive(true);
+        }
+        if (manorShrine.gameObject == null)
+        {
+            manorShrineLine.SetActive(true);
+        }
+        if (manorLock.gameObject == null)
+        {
+            manorLockLine.SetActive(true);
+        }
+        if (manorBody.gameObject == null)
+        {
+            manorBodyLine.SetActive(true);
+        }
+        if (manorAxe.gameObject == null)
+        {
+            manorAxeLine.SetActive(true);
+        }
+
         // LODGE journal lines --------------------------
         if (lodgeGun.gameObject == null)
         {

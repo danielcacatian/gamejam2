@@ -111,7 +111,7 @@ public class RemoveEvidenceScript : MonoBehaviour
         if (manorAllFound && farmAllFound && churchAllFound && lodgeAllFound)
         {
             // Found all the evidence
-            SceneManager.LoadScene (sceneName:"Win");
+            SceneManager.LoadScene(sceneName: "EndingAll");
         }
     }
 

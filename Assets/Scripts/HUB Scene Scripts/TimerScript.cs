@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 
 public class TimerScript : MonoBehaviour
@@ -21,6 +22,9 @@ public class TimerScript : MonoBehaviour
 
     // TESTING TIMER VISUAL
     public Image timerVisual;
+
+    // Ending
+    private float randomEnding;
 
     // SFX
     public AudioSource badSFX;
@@ -40,7 +44,7 @@ public class TimerScript : MonoBehaviour
         if (TimerOn)
         {
             // Time limit (in seconds)
-            if(TimeLeft > TimeLimit) // Ends at 12mins
+            if(TimeLeft > TimeLimit)
             {
                 // Update timer
                 TimeLeft -= Time.deltaTime;
@@ -80,17 +84,82 @@ public class TimerScript : MonoBehaviour
                 // Put fill amount of timer image to 0
                 timerVisual.fillAmount = 0;
 
-                // Bad ending
-                SceneManager.LoadScene (sceneName:"Game Over");
-
+                // No evidence found
+                if(EvidenceController.GetComponent<RemoveEvidenceScript>().lodgeAllFound == false &&
+                   EvidenceController.GetComponent<RemoveEvidenceScript>().manorAllFound == false &&
+                   EvidenceController.GetComponent<RemoveEvidenceScript>().farmAllFound == false &&
+                   EvidenceController.GetComponent<RemoveEvidenceScript>().churchAllFound == false)
+                {
+                    randomEnding = Random.Range(1, 4);
+                    if(randomEnding == 1)
+                    {
+                        SceneManager.LoadScene(sceneName: "EndingCultist");
+                    }
+                    else if (randomEnding == 2)
+                    {
+                        SceneManager.LoadScene(sceneName: "EndingHitman");
+                    }
+                    else if (randomEnding == 3)
+                    {
+                        SceneManager.LoadScene(sceneName: "EndingSK");
+                    }
+                    else if (randomEnding == 4)
+                    {
+                        SceneManager.LoadScene(sceneName: "EndingAlien");
+                    }
+                }
+                else if(EvidenceController.GetComponent<RemoveEvidenceScript>().lodgeAllFound == false &&
+                        EvidenceController.GetComponent<RemoveEvidenceScript>().manorAllFound == false &&
+                        EvidenceController.GetComponent<RemoveEvidenceScript>().farmAllFound == false)
+                {
+                    randomEnding = Random.Range(1, 3);
+                    if (randomEnding == 1)
+                    {
+                        SceneManager.LoadScene(sceneName: "EndingSK");
+                    }
+                    else if (randomEnding == 2)
+                    {
+                        SceneManager.LoadScene(sceneName: "EndingHitman");
+                    }
+                    else if (randomEnding == 3)
+                    {
+                        SceneManager.LoadScene(sceneName: "EndingAlien");
+                    }
+                }
+                else if (EvidenceController.GetComponent<RemoveEvidenceScript>().lodgeAllFound == false &&
+                         EvidenceController.GetComponent<RemoveEvidenceScript>().manorAllFound == false)
+                {
+                    randomEnding = Random.Range(1, 2);
+                    if (randomEnding == 1)
+                    {
+                        SceneManager.LoadScene(sceneName: "EndingSK");
+                    }
+                    else if (randomEnding == 2)
+                    {
+                        SceneManager.LoadScene(sceneName: "EndingHitman");
+                    }
+                }
+                // CHURCH NOT found
+                else if (EvidenceController.GetComponent<RemoveEvidenceScript>().churchAllFound == false)
+                {
+                    SceneManager.LoadScene(sceneName: "EndingCultist");
+                }
+                // LODGE NOT found
+                else if (EvidenceController.GetComponent<RemoveEvidenceScript>().lodgeAllFound == false)
+                {
+                    SceneManager.LoadScene(sceneName: "EndingHitman");
+                }
+                // MANOR NOT found
+                else if (EvidenceController.GetComponent<RemoveEvidenceScript>().manorAllFound == false)
+                {
+                    SceneManager.LoadScene(sceneName: "EndingSK");
+                }
+                // FARM NOT found
+                else if (EvidenceController.GetComponent<RemoveEvidenceScript>().farmAllFound == false)
+                {
+                    SceneManager.LoadScene(sceneName: "EndingAlien");
+                }
             }
-            
-            // Multiple endings
-            if (EvidenceController.GetComponent<RemoveEvidenceScript>().lodgeAllFound == true)
-            {
-                //SceneManager.LoadScene(sceneName: "Game Over");
-            }
-
         }
     }
 

@@ -16,6 +16,15 @@ public class LocationScript : MonoBehaviour
     public Sprite mapFarm;
     public Sprite mapChurch;
 
+    //Map Xs
+    public GameObject manorX;
+    public GameObject lodgeX;
+    public GameObject churchX;
+    public GameObject farmX;
+
+    //declare and assign the gameObj that has the script
+    public GameObject EvidenceController;
+
     // SFX
     public AudioSource locationSFX;
     public AudioSource clickSFX;
@@ -31,6 +40,13 @@ public class LocationScript : MonoBehaviour
             {
                 cameras[i].GetComponent<Camera>().enabled = false;
             }
+
+        // Xs are not active
+        manorX.SetActive(false);
+        lodgeX.SetActive(false);
+        churchX.SetActive(false);
+        farmX.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -43,9 +59,10 @@ public class LocationScript : MonoBehaviour
             
             //Clicks on collider area
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            
+
             //Brings you to MANOR location
-            if (hit && hit.collider.gameObject.name == "Manor")
+            if (hit && hit.collider.gameObject.name == "Manor" &&
+                EvidenceController.GetComponent<RemoveEvidenceScript>().manorAllFound == false)
             {
                 cameras[0].GetComponent<Camera>().enabled = false;
                 cameras[1].GetComponent<Camera>().enabled = true; // Enable MANOR cam
@@ -57,7 +74,8 @@ public class LocationScript : MonoBehaviour
                 mouseDown = false;
             }
             //Brings you to FARM location
-            if (hit && hit.collider.gameObject.name == "Farm")
+            if (hit && hit.collider.gameObject.name == "Farm" &&
+                EvidenceController.GetComponent<RemoveEvidenceScript>().farmAllFound == false)
             {
                 cameras[0].GetComponent<Camera>().enabled = false;
                 cameras[1].GetComponent<Camera>().enabled = false;
@@ -69,7 +87,8 @@ public class LocationScript : MonoBehaviour
                 mouseDown = false;
             }
             //Brings you to CHURCH location
-            if (hit && hit.collider.gameObject.name == "Church")
+            if (hit && hit.collider.gameObject.name == "Church" &&
+                EvidenceController.GetComponent<RemoveEvidenceScript>().churchAllFound == false)
             {
                 cameras[0].GetComponent<Camera>().enabled = false;
                 cameras[1].GetComponent<Camera>().enabled = false;
@@ -81,7 +100,8 @@ public class LocationScript : MonoBehaviour
                 mouseDown = false;
             }
             //Brings you to LODGE location
-            if (hit && hit.collider.gameObject.name == "Lodge")
+            if (hit && hit.collider.gameObject.name == "Lodge" &&
+                EvidenceController.GetComponent<RemoveEvidenceScript>().lodgeAllFound == false)
             {
                 cameras[0].GetComponent<Camera>().enabled = false;
                 cameras[1].GetComponent<Camera>().enabled = false;
@@ -98,6 +118,28 @@ public class LocationScript : MonoBehaviour
         {
             mouseDown = true;
         }
+
+        // Xs appear when all evidences are found
+        //MANOR all found
+        if (EvidenceController.GetComponent<RemoveEvidenceScript>().manorAllFound == true)
+        {
+            manorX.SetActive(true);
+        }
+        //LODGE allfound
+        else if (EvidenceController.GetComponent<RemoveEvidenceScript>().lodgeAllFound == true)
+        {
+            lodgeX.SetActive(true);
+        }
+        //CHURCH allfound
+        else if (EvidenceController.GetComponent<RemoveEvidenceScript>().churchAllFound == true)
+        {
+            churchX.SetActive(true);
+        }
+        //FARM allfound
+        else if (EvidenceController.GetComponent<RemoveEvidenceScript>().farmAllFound == true)
+        {
+            farmX.SetActive(true);
+        }
     }
 
     // Mouse hover over certain locations
@@ -111,21 +153,21 @@ public class LocationScript : MonoBehaviour
         if(Time.timeScale == 1)
         {
             // Hover over manor
-            if (hit && hit.collider.gameObject.name == "Manor" || hit.collider.gameObject.name == "Serial Killer PFP")
+            if (EvidenceController.GetComponent<RemoveEvidenceScript>().manorAllFound == false && hit && hit.collider.gameObject.name == "Manor" || hit.collider.gameObject.name == "Serial Killer PFP")
             {
                 map.gameObject.GetComponent<SpriteRenderer>().sprite = mapManor;
                 locationSFX.Play();
             }
 
             // Hover over lodge
-            else if (hit && hit.collider.gameObject.name == "Lodge" || hit.collider.gameObject.name == "Hitman PFP")
+            else if (EvidenceController.GetComponent<RemoveEvidenceScript>().lodgeAllFound == false && hit && hit.collider.gameObject.name == "Lodge" || hit.collider.gameObject.name == "Hitman PFP")
             {
                 map.gameObject.GetComponent<SpriteRenderer>().sprite = mapLodge;
                 locationSFX.Play();
             }
 
             // Hover over church
-            else if (hit && hit.collider.gameObject.name == "Church" || hit.collider.gameObject.name == "Cultist PFP")
+            else if (EvidenceController.GetComponent<RemoveEvidenceScript>().churchAllFound == false && hit && hit.collider.gameObject.name == "Church" || hit.collider.gameObject.name == "Cultist PFP")
             {
                 map.gameObject.GetComponent<SpriteRenderer>().sprite = mapChurch;
                 locationSFX.Play();

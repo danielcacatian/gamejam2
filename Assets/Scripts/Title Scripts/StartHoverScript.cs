@@ -32,7 +32,7 @@ public class StartHoverScript : MonoBehaviour
             //START GAME
             if (hit && hit.collider.gameObject.name == "Start")
             {
-                SceneManager.LoadScene(sceneName: "HUB");
+                SceneManager.LoadScene(sceneName: "Tutorial");
             }
         }
 

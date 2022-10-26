@@ -21,6 +21,9 @@ public class TimerScript : MonoBehaviour
     // TESTING TIMER VISUAL
     public Image timerVisual;
 
+    // SFX
+    public AudioSource badSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +59,9 @@ public class TimerScript : MonoBehaviour
 
                         // TestIGNsdig
                         timerVisual.fillAmount -= 10f/120f ; // TimePenalty / Time Limit------------------
+
+                        // SFX
+                        badSFX.Play();
                     }
                 }
 
@@ -77,6 +83,13 @@ public class TimerScript : MonoBehaviour
                 SceneManager.LoadScene (sceneName:"Game Over");
 
             }
+            
+            // Multiple endings
+            if (EvidenceController.GetComponent<RemoveEvidenceScript>().lodgeAllFound == true)
+            {
+                //SceneManager.LoadScene(sceneName: "Game Over");
+            }
+
         }
     }
 

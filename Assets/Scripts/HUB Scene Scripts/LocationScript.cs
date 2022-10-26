@@ -99,8 +99,15 @@ public class LocationScript : MonoBehaviour
 
         if(Time.timeScale == 1)
         {
+            // Hover over manor
+            if (hit && hit.collider.gameObject.name == "Manor" || hit.collider.gameObject.name == "Serial Killer PFP")
+            {
+                map.gameObject.GetComponent<SpriteRenderer>().sprite = mapManor;
+                locationSFX.Play();
+            }
+
             // Hover over lodge
-            if (hit && hit.collider.gameObject.name == "Lodge" || hit.collider.gameObject.name == "Hitman PFP")
+            else if (hit && hit.collider.gameObject.name == "Lodge" || hit.collider.gameObject.name == "Hitman PFP")
             {
                 map.gameObject.GetComponent<SpriteRenderer>().sprite = mapLodge;
                 locationSFX.Play();

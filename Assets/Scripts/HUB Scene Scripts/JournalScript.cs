@@ -3,7 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class JournalScript : MonoBehaviour
-{
+{       
+        // Farm journal -----------------------------------
+        // Lines
+        public GameObject farmHandsLine;
+        public GameObject farmEvilSignLine;
+        public GameObject farmUFOLine;
+        public GameObject farmSkullLine;
+        public GameObject farmBlobLine;
+        // Evidences
+        public GameObject farmHands;
+        public GameObject farmEvilSign;
+        public GameObject farmUFO;
+        public GameObject farmSkull;
+        public GameObject farmBlob;
         // Manor journal -----------------------------------
         // Lines
         public GameObject manorMopLine;
@@ -34,19 +47,26 @@ public class JournalScript : MonoBehaviour
         // Lines
         public GameObject churchGobletLine;
         public GameObject churchPoisonLine;
-        public GameObject churchCrackLine;
+        public GameObject churchPentaLine;
         public GameObject churchKnivesLine;
         public GameObject churchPostersLine;
         // Evidences
         public GameObject churchGoblet;
         public GameObject churchPoison;
-        public GameObject churchCrack;
+        public GameObject churchPenta;
         public GameObject churchKnives;
         public GameObject churchPosters;
 
     // Start is called before the first frame update
     void Start()
     {
+        //FARM line deactivation ----------------------
+        farmHandsLine.SetActive(false);
+        farmEvilSignLine.SetActive(false);
+        farmUFOLine.SetActive(false);
+        farmSkullLine.SetActive(false);
+        farmBlobLine.SetActive(false);
+
         //MANOR line deactivation ----------------------
         manorMopLine.SetActive(false);
         manorShrineLine.SetActive(false);
@@ -64,7 +84,7 @@ public class JournalScript : MonoBehaviour
         //CHURCH line deactivation ----------------------
         churchGobletLine.SetActive(false);
         churchPoisonLine.SetActive(false);
-        churchCrackLine.SetActive(false);
+        churchPentaLine.SetActive(false);
         churchKnivesLine.SetActive(false);
         churchPostersLine.SetActive(false);
     }
@@ -72,6 +92,28 @@ public class JournalScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // FARM journal lines --------------------------
+        if (farmHands.gameObject == null)
+        {
+            farmHandsLine.SetActive(true);
+        }
+        if (farmEvilSign.gameObject == null)
+        {
+            farmEvilSignLine.SetActive(true);
+        }
+        if (farmUFO.gameObject == null)
+        {
+            farmUFOLine.SetActive(true);
+        }
+        if (farmSkull.gameObject == null)
+        {
+            farmSkullLine.SetActive(true);
+        }
+        if (farmBlob.gameObject == null)
+        {
+            farmBlobLine.SetActive(true);
+        }
+
         // MANOR journal lines --------------------------
         if (manorMop.gameObject == null)
         {
@@ -128,9 +170,9 @@ public class JournalScript : MonoBehaviour
             churchPoisonLine.SetActive(true);
         }
         // Crack is removed
-        if (churchCrack.gameObject == null)
+        if (churchPenta.gameObject == null)
         {
-            churchCrackLine.SetActive(true);
+            churchPentaLine.SetActive(true);
         }
         // Knives is removed
         if (churchKnives.gameObject == null)

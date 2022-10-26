@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Endings/EndingSK.unity
     guid: d3053b583915ec241ac04812748b4f55
+  - enabled: 1
+    path: Assets/Scenes/Endings/EndingAlien.unity
+    guid: e6284ea3af2e27a40a5b05c54ce9165c
   m_configObjects: {}

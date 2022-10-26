@@ -10,6 +10,8 @@ public class ExitUIScript : MonoBehaviour, IPointerDownHandler
     public GameObject controlsScreen;
     public GameObject pauseScreen;
 
+    public GameObject LocationMouse;
+
     public AudioSource clickSFX;
 
     // Start is called before the first frame update
@@ -20,7 +22,8 @@ public class ExitUIScript : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (journalScreen.activeSelf || controlsScreen.activeSelf || pauseScreen.activeSelf)
+        if (journalScreen.activeSelf || controlsScreen.activeSelf || pauseScreen.activeSelf &&
+            LocationMouse.GetComponent<LocationScript>().mouseDown == true)
         {
             //Resume scene
             Time.timeScale = 1;
@@ -29,12 +32,13 @@ public class ExitUIScript : MonoBehaviour, IPointerDownHandler
             pauseScreen.SetActive(false);
 
             clickSFX.Play();
+            LocationMouse.GetComponent<LocationScript>().mouseDown = false;
         }
-
     }
 
     //Mouse release
     public void OnPointerUp(PointerEventData eventData)
     {
+        LocationMouse.GetComponent<LocationScript>().mouseDown = true;
     }
 }

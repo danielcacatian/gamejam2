@@ -126,17 +126,17 @@ public class LocationScript : MonoBehaviour
             manorX.SetActive(true);
         }
         //LODGE allfound
-        else if (EvidenceController.GetComponent<RemoveEvidenceScript>().lodgeAllFound == true)
+        if (EvidenceController.GetComponent<RemoveEvidenceScript>().lodgeAllFound == true)
         {
             lodgeX.SetActive(true);
         }
         //CHURCH allfound
-        else if (EvidenceController.GetComponent<RemoveEvidenceScript>().churchAllFound == true)
+        if (EvidenceController.GetComponent<RemoveEvidenceScript>().churchAllFound == true)
         {
             churchX.SetActive(true);
         }
         //FARM allfound
-        else if (EvidenceController.GetComponent<RemoveEvidenceScript>().farmAllFound == true)
+        if (EvidenceController.GetComponent<RemoveEvidenceScript>().farmAllFound == true)
         {
             farmX.SetActive(true);
         }
@@ -170,6 +170,13 @@ public class LocationScript : MonoBehaviour
             else if (EvidenceController.GetComponent<RemoveEvidenceScript>().churchAllFound == false && hit && hit.collider.gameObject.name == "Church" || hit.collider.gameObject.name == "Cultist PFP")
             {
                 map.gameObject.GetComponent<SpriteRenderer>().sprite = mapChurch;
+                locationSFX.Play();
+            }
+
+            // Hover over farm
+            else if (EvidenceController.GetComponent<RemoveEvidenceScript>().farmAllFound == false && hit && hit.collider.gameObject.name == "Farm" || hit.collider.gameObject.name == "Alien PFP")
+            {
+                map.gameObject.GetComponent<SpriteRenderer>().sprite = mapFarm;
                 locationSFX.Play();
             }
         }

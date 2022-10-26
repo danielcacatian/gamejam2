@@ -36,6 +36,8 @@ public class RemoveEvidenceScript : MonoBehaviour
     public AudioSource randomSound;
     public AudioClip[]  AudioSources;
 
+    //declare and assign the gameObj that has the script
+    public GameObject LocationMouse;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +64,7 @@ public class RemoveEvidenceScript : MonoBehaviour
     void Update()
     {
         // Click function
-        if (Input.GetMouseButtonDown(0) && Time.timeScale == 1)
+        if (Input.GetMouseButtonDown(0) && Time.timeScale == 1 && LocationMouse.GetComponent<LocationScript>().mouseDown == true)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
@@ -102,10 +104,11 @@ public class RemoveEvidenceScript : MonoBehaviour
                 LodgeEvidenceFound(1);
                 RandomSoundness();
             }
+
         }
 
         // No more evidence
-        if(manorAllFound && farmAllFound && churchAllFound && lodgeAllFound)
+        if (manorAllFound && farmAllFound && churchAllFound && lodgeAllFound)
         {
             // Found all the evidence
             SceneManager.LoadScene (sceneName:"Win");

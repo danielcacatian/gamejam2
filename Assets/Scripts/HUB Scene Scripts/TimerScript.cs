@@ -12,11 +12,12 @@ public class TimerScript : MonoBehaviour
     public float TimeLeft; //in seconds
     public float TimeLimit; //in seconds
     public float TimePenalty;
-    public bool TimerOn = true;
+    private bool TimerOn = true;
     public TMP_Text TimerText;
 
     //declare and assign the gameObj that has the script
     public GameObject EvidenceController;
+    public GameObject LocationMouse;
 
     // TESTING TIMER VISUAL
     public Image timerVisual;
@@ -53,7 +54,7 @@ public class TimerScript : MonoBehaviour
                     Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
                     RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
         
-                    if(hit && hit.collider.gameObject.tag == "Penalty")
+                    if(hit && hit.collider.gameObject.tag == "Penalty" && LocationMouse.GetComponent<LocationScript>().mouseDown == true)
                     {
                         TimeLeft -= TimePenalty; // Reduce by penalty
 

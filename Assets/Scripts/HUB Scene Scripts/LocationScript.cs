@@ -20,6 +20,8 @@ public class LocationScript : MonoBehaviour
     public AudioSource locationSFX;
     public AudioSource clickSFX;
 
+    public bool mouseDown = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +36,7 @@ public class LocationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Time.timeScale == 1)
+        if (Input.GetMouseButtonDown(0) && Time.timeScale == 1 && mouseDown)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
@@ -52,6 +54,7 @@ public class LocationScript : MonoBehaviour
                 cameras[4].GetComponent<Camera>().enabled = false;
                 //SFX
                 clickSFX.Play();
+                mouseDown = false;
             }
             //Brings you to FARM location
             if (hit && hit.collider.gameObject.name == "Farm")
@@ -63,6 +66,7 @@ public class LocationScript : MonoBehaviour
                 cameras[4].GetComponent<Camera>().enabled = false;
                 //SFX
                 clickSFX.Play();
+                mouseDown = false;
             }
             //Brings you to CHURCH location
             if (hit && hit.collider.gameObject.name == "Church")
@@ -74,6 +78,7 @@ public class LocationScript : MonoBehaviour
                 cameras[4].GetComponent<Camera>().enabled = false;
                 //SFX
                 clickSFX.Play();
+                mouseDown = false;
             }
             //Brings you to LODGE location
             if (hit && hit.collider.gameObject.name == "Lodge")
@@ -85,7 +90,13 @@ public class LocationScript : MonoBehaviour
                 cameras[4].GetComponent<Camera>().enabled = true; // Enable LODGE cam
                 //SFX
                 clickSFX.Play();
+                mouseDown = false;
             }
+        }
+
+        else
+        {
+            mouseDown = true;
         }
     }
 

@@ -352,6 +352,7 @@ MonoBehaviour:
   mapChurch: {fileID: 21300000, guid: f86487ef2be8a2e46810159b931cde50, type: 3}
   locationSFX: {fileID: 1786158028}
   clickSFX: {fileID: 378438294}
+  mouseDown: 1
 --- !u!212 &72879262
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2770,6 +2771,7 @@ MonoBehaviour:
   mapChurch: {fileID: 21300000, guid: f86487ef2be8a2e46810159b931cde50, type: 3}
   locationSFX: {fileID: 1786158028}
   clickSFX: {fileID: 378438294}
+  mouseDown: 1
 --- !u!212 &550789106
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3661,6 +3663,7 @@ MonoBehaviour:
   mapChurch: {fileID: 21300000, guid: f86487ef2be8a2e46810159b931cde50, type: 3}
   locationSFX: {fileID: 1786158028}
   clickSFX: {fileID: 378438294}
+  mouseDown: 1
 --- !u!212 &781805823
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5834,6 +5837,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ddb68896917928a479b6ec75d49a6b67, type: 3}
   - {fileID: 8300000, guid: 4d1223d8e3f96654a93b3abb46744d6d, type: 3}
   - {fileID: 8300000, guid: 3f9a48fbc428d3344ae604300dba9a44, type: 3}
+  LocationMouse: {fileID: 72879258}
 --- !u!82 &1053068477
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6100,6 +6104,7 @@ MonoBehaviour:
   mapChurch: {fileID: 21300000, guid: f86487ef2be8a2e46810159b931cde50, type: 3}
   locationSFX: {fileID: 1786158028}
   clickSFX: {fileID: 378438294}
+  mouseDown: 1
 --- !u!212 &1126635098
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9662,9 +9667,9 @@ MonoBehaviour:
   TimeLeft: 120
   TimeLimit: 0
   TimePenalty: 10
-  TimerOn: 1
   TimerText: {fileID: 1761012421}
   EvidenceController: {fileID: 1053068473}
+  LocationMouse: {fileID: 72879258}
   timerVisual: {fileID: 723400005}
   badSFX: {fileID: 2052843595}
 --- !u!114 &1761012421
